@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Palíndromo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2 class="title">Palíndromo</h2>
+
+    <div class="container">
+
+        <div class="left-column">
+            <h3 class="subtitle">Código en Python</h3>
+            <pre class="code">
+        def isPanlindrome(inputStr: str) -> bool:
+            return inputStr == inputStr[::-1]
+            </pre>
+
+            <h3 class="subtitle">Ejemplos</h3>
+            <ul class="examples">
+                <li>aabaa → True</li>
+                <li>abac → False</li>
+                <li>salas → True</li>
+            </ul>
+            
+            <div class="download-container">
+                <a href="{{ url_for('descargar_palindromo') }}">
+                    <button class="download">Descargar código (.py)</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3 class="subtitle">Probar lógica</h3>
+            <form method="POST" action="{{ url_for('palindromo') }}">
+                <input type="text" name="inputStr" placeholder="Ej: salas" required>
+                <button type="submit">Verificar</button>
+            </form>
+
+            {% if palabra is not none and result is not none %}
+            <h3 class="subtitle">Resultado</h3>
+
+            <p><strong>Palabra:</strong> {{ palabra }}</p>
+            <p>
+                <strong>Solución:</strong>
+                {% if result %}
+                    Verdadero, es palíndromo.
+                {% else %}
+                    Falso, no es palíndromo.
+                {% endif %}
+            </p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <form action="/" method="GET">
+        <button type="submit" class="back">Regresar</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Suma de Dígitos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h2 class="title">Suma de Dígitos</h2>
+
+    <div class="container">
+
+        <div class="left-column">
+            <h3 class="subtitle">Código en Python</h3>
+            <pre class="code">                
+        def digitsSum(inputInt: int) -> int:
+            suma = 0
+            for num in str(abs(inputInt)):
+                suma += int(num)
+            return suma            
+            </pre>
+
+            <h3 class="subtitle">Ejemplos</h3>
+            <ul class="examples">
+                <li>digitsSum(12345) → 15</li>
+                <li>digitsSum(999) → 27</li>
+                <li>digitsSum(9184501) → 28</li>
+            </ul>
+
+            <div class="download-container">
+                <a href="{{ url_for('descargar_digits_sum') }}">
+                    <button class="download">Descargar código (.py)</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3 class="subtitle">Probar lógica</h3>
+            <form method="POST" action="{{ url_for('suma') }}">
+                <input type="number" name="inputInt" placeholder="Ej: 12345" required>
+                <button type="submit">Calcular</button>
+            </form>
+
+            {% if cantidad is not none and result is not none %}
+            <h3 class="subtitle">Resultado</h3>
+
+            <p><strong>Cantidad:</strong> {{ cantidad }}</p>
+            <p><strong>Proceso:</strong> {{ proceso }}</p>
+            <p><strong>Solución:</strong> {{ result }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <form action="/" method="GET">
+        <button type="submit" class="back">Regresar</button>
+    </form>
+
+</body>
+</html>

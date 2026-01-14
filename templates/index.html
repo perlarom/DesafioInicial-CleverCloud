@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Desafío Inicial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Desafío Inicial</h1>
+
+<div class="button-container">
+
+    <a href="/suma">
+        <button>Suma de dígitos</button>
+    </a>
+
+    <a href="/palindromo">
+        <button>Palíndromo</button>
+    </a>
+
+    <a href="/ordenamiento">
+        <button>Ordenamiento</button>
+    </a>
+
+    <a href="{{ url_for('descargar_zip') }}">
+        <button>Descargar ejercicios</button>
+    </a>
+</div>
+
+</body>
+</html>

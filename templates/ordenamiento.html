@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ordenamiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h2 class="title">Ordenamiento</h2>
+
+    <div class="container">
+
+        <div class="left-column">
+            <h3 class="subtitle">Código en Python</h3>
+            <pre class="code">
+        def integerSort(inputArray):
+            arr = inputArray.copy()
+            n = len(arr)
+                for i in range(n):
+                    for j in range(0, n-i-1):
+                        if arr[j] > arr[j+1]:
+                            arr[j], arr[j+1] = arr[j+1], arr[j]
+                return arr
+            </pre>
+
+            <h3 class="subtitle">Ejemplo</h3>
+            <ul class="examples">
+                [5, -2, 10, 0, 3] → [-2, 0, 3, 5, 10]
+            </ul>
+
+            <div class="download-container">
+                <a href="{{ url_for('descargar_ordenamiento') }}">
+                    <button class="download">Descargar código (.py)</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h3 class="subtitle">Probar lógica</h3>
+            <form method="POST" action="{{ url_for('ordenamiento') }}">
+                <input type="text" name="inputArray" placeholder="Ej: 5,-2,10,0,3" required>
+                <button type="submit">Ordenar</button>
+            </form>
+
+            {% if original is not none and result is not none %}
+            <h3 class="subtitle">Resultado</h3>
+
+            <p><strong>Antes:</strong> {{ original | join(", ") }}</p>
+            <p><strong>Después:</strong> {{ result | join(", ") }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <form action="/" method="GET">
+        <button type="submit" class="back">Regresar</button>
+    </form>
+
+</body>
+</html>
